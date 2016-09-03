@@ -92,13 +92,27 @@
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                             <i class="material-icons">notifications</i>
-                            <span class="label-count">7</span>
+                            <span id="notification_count" class="label-count">7</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">NOTIFICATIONS</li>
                             <li class="body">
                                 <ul id="notification_menu" class="menu">
+                                    @foreach($notifications as $n)
+                                    @if($n->title = 'request')
                                     <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="menu-info">
+                                                <h4>{{$n->body}}</h4>
+                                                <p>
+                                                    <i class="material-icons">note_add</i> {{$n->created_at}}
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    @endif
+                                    @endforeach
+                                    <!-- <li>
                                         <a href="javascript:void(0);">
                                             <div class="icon-circle bg-light-green">
                                                 <i class="material-icons">person_add</i>
@@ -188,7 +202,7 @@
                                                 </p>
                                             </div>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
                             <li class="footer">
@@ -615,13 +629,10 @@
           $('#notification_menu').prepend(
               '<li>'+
                   '<a href="javascript:void(0);">'+
-                      '<div class="icon-circle bg-pink">'+
-                          '<i class="material-icons">note_add</i>'+
-                      '</div>'+
                       '<div class="menu-info">'+
                           '<h4>'+ data.request_data.title +'</h4>'+
                           '<p>'+
-                              '<i class="material-icons">access_time</i> '+ data.request_data.created_at +
+                              '<i class="material-icons">note_add</i> '+ data.request_data.created_at +
                           '</p>'+
                       '</div>'+
                   '</a>'+

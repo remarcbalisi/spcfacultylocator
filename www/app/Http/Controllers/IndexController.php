@@ -79,6 +79,17 @@ class IndexController extends Controller
         $req->body = 'Registration request from ' . $user->name . ' as ' . $user->user_type;
         $req->save();
 
+        $admin_users = User::where(['user_type'=>'admin'])->get();
+        $notification_title = 'request';
+        $notification_body = 'Registration request from ' . $user->name . ' as ' . $user->user_type;
+        foreach($admin_users as $au){
+            $notification = new Notification;
+            $notification->title = $notification_title;
+            $notification->body = $notification_body;
+            $notification->user_id = $au->id;
+            $notification->save();
+        }
+
         event(new RequestEvent($req));
 
         $departments = Department::get();

@@ -8,9 +8,13 @@ use App\Http\Requests;
 
 use Hash;
 
+use Auth;
+
 //model
 use App\User;
 use App\Department;
+use App\Notification;
+use App\RequestTable;
 
 class AdminHomeController extends Controller
 {
@@ -22,10 +26,14 @@ class AdminHomeController extends Controller
     public function index()
     {
         $user = User::get();
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
+        $pending_requests = RequestTable::where(['is_granted'=>false])->get();
         return view('admin.home')
                 ->with(['pageTitle'=>'Admin Home | ' . SITE_NAME,
                         'user_count'=>$user->count(),
-                        'users'=> User::get()
+                        'users'=> User::get(),
+                        'notifications'=>$notifications,
+                        'pending_requests'=>$pending_requests
                     ]);
     }
 

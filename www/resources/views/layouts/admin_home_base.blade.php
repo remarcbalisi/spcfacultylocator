@@ -45,6 +45,7 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset("/css/themes/all-themes.css")}}" rel="stylesheet" />
+
 </head>
 
 <body class="theme-red">
@@ -96,7 +97,7 @@
                         <ul class="dropdown-menu">
                             <li class="header">NOTIFICATIONS</li>
                             <li class="body">
-                                <ul class="menu">
+                                <ul id="notification_menu" class="menu">
                                     <li>
                                         <a href="javascript:void(0);">
                                             <div class="icon-circle bg-light-green">
@@ -138,8 +139,8 @@
                                     </li>
                                     <li>
                                         <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-orange">
-                                                <i class="material-icons">mode_edit</i>
+                                            <div class="icon-circle bg-pink">
+                                                <i class="material-icons">note_add</i>
                                             </div>
                                             <div class="menu-info">
                                                 <h4><b>Nancy</b> changed name</h4>
@@ -599,6 +600,36 @@
 
     <!-- Demo Js -->
     <script src="{{asset("/js/demo.js")}}"></script>
+
+    <!-- pusher js -->
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    <script type="text/javascript">
+
+        var pusher = new Pusher('07f11b2233cd851cf793', {
+          encrypted: true
+        });
+
+        var request_channel = pusher.subscribe('request_channel');
+        request_channel.bind('App\\Events\\RequestEvent', function(data) {
+
+          $('#notification_menu').prepend(
+              '<li>'+
+                  '<a href="javascript:void(0);">'+
+                      '<div class="icon-circle bg-pink">'+
+                          '<i class="material-icons">note_add</i>'+
+                      '</div>'+
+                      '<div class="menu-info">'+
+                          '<h4>'+ data.request_data.title +'</h4>'+
+                          '<p>'+
+                              '<i class="material-icons">access_time</i> '+ data.request_data.created_at +
+                          '</p>'+
+                      '</div>'+
+                  '</a>'+
+              '</li>'
+          );
+
+        });
+    </script>
 </body>
 
 </html>

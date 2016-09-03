@@ -7476,3 +7476,474 @@ Stack trace:
 #39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #40 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #41 {main}  
+[2016-09-03 02:45:30] local.ERROR: Symfony\Component\Console\Exception\RuntimeException: Too many arguments. in E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Input\ArgvInput.php:179
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Input\ArgvInput.php(88): Symfony\Component\Console\Input\ArgvInput->parseArgument('RequestEvent')
+#1 E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Input\Input.php(62): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Command\Command.php(221): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Console\Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Application.php(818): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Foundation\Console\EventGenerateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\symfony\console\Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(122): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 E:\xampp\htdocs\spcfacloc2\www\artisan(35): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 {main}  
+[2016-09-03 03:01:16] local.ERROR: PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test' for key 'PRIMARY' in E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php:480
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(480): PDOStatement->execute()
+#1 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(754): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `re...', Array)
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(717): Illuminate\Database\Connection->runQueryCallback('insert into `re...', Array, Object(Closure))
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(481): Illuminate\Database\Connection->run('insert into `re...', Array, Object(Closure))
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(435): Illuminate\Database\Connection->statement('insert into `re...', Array)
+#5 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php(32): Illuminate\Database\Connection->insert('insert into `re...', Array)
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2137): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `re...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(1416): call_user_func_array(Array, Array)
+#9 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1606): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1575): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1472): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder))
+#12 E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php(79): Illuminate\Database\Eloquent\Model->save()
+#13 [internal function]: App\Http\Controllers\IndexController->store(Object(App\RequestTable))
+#14 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(55): call_user_func_array(Array, Array)
+#15 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('store', Array)
+#16 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\IndexController), 'store')
+#17 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(144): Illuminate\Routing\Route->runController()
+#18 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(642): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#19 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#20 E:\xampp\htdocs\spcfacloc2\www\app\Http\Middleware\RedirectIfAuthenticated.php(30): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#24 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#27 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#30 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#33 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#34 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#35 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#36 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#41 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#42 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(644): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#43 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(618): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#44 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(596): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#45 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(267): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#46 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#47 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#48 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#51 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(149): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#52 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#53 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#54 {main}
+
+Next Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test' for key 'PRIMARY' (SQL: insert into `request` (`id`, `title`, `body`, `updated_at`, `created_at`) values (test, Registration request from test, Registration request from test as student, 2016-09-03 03:01:16, 2016-09-03 03:01:16)) in E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php:761
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(717): Illuminate\Database\Connection->runQueryCallback('insert into `re...', Array, Object(Closure))
+#1 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(481): Illuminate\Database\Connection->run('insert into `re...', Array, Object(Closure))
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(435): Illuminate\Database\Connection->statement('insert into `re...', Array)
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php(32): Illuminate\Database\Connection->insert('insert into `re...', Array)
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2137): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `re...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(1416): call_user_func_array(Array, Array)
+#7 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1606): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1575): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#9 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1472): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder))
+#10 E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php(79): Illuminate\Database\Eloquent\Model->save()
+#11 [internal function]: App\Http\Controllers\IndexController->store(Object(App\RequestTable))
+#12 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(55): call_user_func_array(Array, Array)
+#13 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('store', Array)
+#14 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\IndexController), 'store')
+#15 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(144): Illuminate\Routing\Route->runController()
+#16 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(642): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#17 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#18 E:\xampp\htdocs\spcfacloc2\www\app\Http\Middleware\RedirectIfAuthenticated.php(30): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#19 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#22 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#25 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#28 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#31 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#33 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#34 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#35 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#36 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#37 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#40 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(644): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#41 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(618): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#42 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(596): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#43 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(267): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#44 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#45 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#46 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#48 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#49 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(149): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#50 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#51 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#52 {main}  
+[2016-09-03 03:08:33] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Class 'App\Events\Event' not found in E:\xampp\htdocs\spcfacloc2\www\app\Events\RequestEvent.php:12
+Stack trace:
+#0 {main}  
+[2016-09-03 03:12:42] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from test",
+        "body": "Registration request from test as student",
+        "created_at": "2016-09-03 03:12:42",
+        "updated_at": "2016-09-03 03:12:42",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 03:16:30] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from test",
+        "body": "Registration request from test as student",
+        "created_at": "2016-09-03 03:16:30",
+        "updated_at": "2016-09-03 03:16:30",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 03:17:55] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from test",
+        "body": "Registration request from test as student",
+        "created_at": "2016-09-03 03:17:55",
+        "updated_at": "2016-09-03 03:17:55",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 03:21:26] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from test",
+        "body": "Registration request from test as student",
+        "created_at": "2016-09-03 03:21:26",
+        "updated_at": "2016-09-03 03:21:26",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 03:24:13] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from test",
+        "body": "Registration request from test as student",
+        "created_at": "2016-09-03 03:24:13",
+        "updated_at": "2016-09-03 03:24:13",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 03:24:39] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from fdfsa",
+        "body": "Registration request from fdfsa as student",
+        "created_at": "2016-09-03 03:24:39",
+        "updated_at": "2016-09-03 03:24:39",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 06:21:30] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from test",
+        "body": "Registration request from test as student",
+        "created_at": "2016-09-03 06:21:30",
+        "updated_at": "2016-09-03 06:21:30",
+        "is_granted": 0,
+        "granted_by": null
+    }
+}  
+[2016-09-03 06:29:16] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from fdsafdsfa",
+        "body": "Registration request from fdsafdsfa as student",
+        "created_at": "2016-09-03 06:29:16",
+        "updated_at": "2016-09-03 06:29:16",
+        "is_granted": 0,
+        "granted_by": null
+    }
+}  
+[2016-09-03 06:36:15] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from fdsafdsfa",
+        "body": "Registration request from fdsafdsfa as student",
+        "created_at": "2016-09-03 06:29:16",
+        "updated_at": "2016-09-03 06:29:16",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 06:45:44] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from fdsaf",
+        "body": "Registration request from fdsaf as student",
+        "created_at": "2016-09-03 06:45:44",
+        "updated_at": "2016-09-03 06:45:44",
+        "is_granted": 0,
+        "granted_by": null
+    },
+    "socket": null
+}  
+[2016-09-03 06:55:19] local.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Type error: Argument 1 passed to App\Events\RequestEvent::__construct() must be an instance of App\Events\Request, instance of App\RequestTable given, called in E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php on line 81 in E:\xampp\htdocs\spcfacloc2\www\app\Events\RequestEvent.php:22
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php(81): App\Events\RequestEvent->__construct(Object(App\RequestTable))
+#1 [internal function]: App\Http\Controllers\IndexController->store(Object(App\RequestTable))
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(55): call_user_func_array(Array, Array)
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('store', Array)
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\IndexController), 'store')
+#5 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(144): Illuminate\Routing\Route->runController()
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(642): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#7 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#8 E:\xampp\htdocs\spcfacloc2\www\app\Http\Middleware\RedirectIfAuthenticated.php(30): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#10 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#12 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#14 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#15 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#17 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#18 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#24 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#27 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#30 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(644): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(618): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#32 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(596): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(267): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#35 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#36 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(149): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#40 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#41 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#42 {main}  
+[2016-09-03 06:55:52] local.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Type error: Argument 1 passed to App\Events\RequestEvent::__construct() must be an instance of App\Events\RequestTable, instance of App\RequestTable given, called in E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php on line 81 in E:\xampp\htdocs\spcfacloc2\www\app\Events\RequestEvent.php:22
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php(81): App\Events\RequestEvent->__construct(Object(App\RequestTable))
+#1 [internal function]: App\Http\Controllers\IndexController->store(Object(App\RequestTable))
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(55): call_user_func_array(Array, Array)
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('store', Array)
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\IndexController), 'store')
+#5 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(144): Illuminate\Routing\Route->runController()
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(642): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#7 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#8 E:\xampp\htdocs\spcfacloc2\www\app\Http\Middleware\RedirectIfAuthenticated.php(30): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#9 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#10 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#12 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#14 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#15 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#17 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#18 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#24 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#27 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#30 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(644): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#31 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(618): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#32 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(596): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#33 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(267): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#34 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#35 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#36 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(149): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#40 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#41 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#42 {main}  
+[2016-09-03 06:57:26] local.INFO: Broadcasting [App\Events\RequestEvent] on channels [request_channel] with payload:
+{
+    "request_data": {
+        "id": 0,
+        "title": "Registration request from fdsamnm",
+        "body": "Registration request from fdsamnm as student",
+        "created_at": "2016-09-03 06:55:52",
+        "updated_at": "2016-09-03 06:55:52",
+        "is_granted": 0,
+        "granted_by": null
+    }
+}  
+[2016-09-03 16:36:27] local.ERROR: PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test' for key 'PRIMARY' in E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php:480
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(480): PDOStatement->execute()
+#1 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(754): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `re...', Array)
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(717): Illuminate\Database\Connection->runQueryCallback('insert into `re...', Array, Object(Closure))
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(481): Illuminate\Database\Connection->run('insert into `re...', Array, Object(Closure))
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(435): Illuminate\Database\Connection->statement('insert into `re...', Array)
+#5 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php(32): Illuminate\Database\Connection->insert('insert into `re...', Array)
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2137): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `re...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(1416): call_user_func_array(Array, Array)
+#9 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1606): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1575): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1472): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder))
+#12 E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php(79): Illuminate\Database\Eloquent\Model->save()
+#13 [internal function]: App\Http\Controllers\IndexController->store(Object(Illuminate\Http\Request))
+#14 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(55): call_user_func_array(Array, Array)
+#15 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('store', Array)
+#16 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\IndexController), 'store')
+#17 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(144): Illuminate\Routing\Route->runController()
+#18 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(642): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#19 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#20 E:\xampp\htdocs\spcfacloc2\www\app\Http\Middleware\RedirectIfAuthenticated.php(30): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#21 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#24 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#27 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#28 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#29 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#30 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#33 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#34 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#35 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#36 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#38 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#41 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#42 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(644): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#43 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(618): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#44 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(596): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#45 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(267): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#46 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#47 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#48 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#51 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(149): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#52 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#53 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#54 {main}
+
+Next Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test' for key 'PRIMARY' (SQL: insert into `request` (`id`, `title`, `body`, `updated_at`, `created_at`) values (test, Registration request from test, Registration request from test as student, 2016-09-03 16:36:27, 2016-09-03 16:36:27)) in E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php:761
+Stack trace:
+#0 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(717): Illuminate\Database\Connection->runQueryCallback('insert into `re...', Array, Object(Closure))
+#1 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(481): Illuminate\Database\Connection->run('insert into `re...', Array, Object(Closure))
+#2 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Connection.php(435): Illuminate\Database\Connection->statement('insert into `re...', Array)
+#3 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php(32): Illuminate\Database\Connection->insert('insert into `re...', Array)
+#4 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(2137): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `re...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php(1416): call_user_func_array(Array, Array)
+#7 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1606): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1575): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#9 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(1472): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder))
+#10 E:\xampp\htdocs\spcfacloc2\www\app\Http\Controllers\IndexController.php(79): Illuminate\Database\Eloquent\Model->save()
+#11 [internal function]: App\Http\Controllers\IndexController->store(Object(Illuminate\Http\Request))
+#12 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(55): call_user_func_array(Array, Array)
+#13 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('store', Array)
+#14 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(189): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(App\Http\Controllers\IndexController), 'store')
+#15 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Route.php(144): Illuminate\Routing\Route->runController()
+#16 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(642): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#17 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#18 E:\xampp\htdocs\spcfacloc2\www\app\Http\Middleware\RedirectIfAuthenticated.php(30): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#19 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): App\Http\Middleware\RedirectIfAuthenticated->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(41): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#22 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#25 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#28 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#31 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#33 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#34 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#35 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#36 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#37 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#38 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#40 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(644): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#41 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(618): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#42 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Router.php(596): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#43 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(267): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#44 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#45 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#46 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#48 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#49 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(149): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#50 E:\xampp\htdocs\spcfacloc2\www\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#51 E:\xampp\htdocs\spcfacloc2\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#52 {main}  

@@ -17,6 +17,9 @@ use App\User;
 use App\Department;
 use App\RequestTable;
 
+//events
+use App\Events\RequestEvent;
+
 class IndexController extends Controller
 {
     /**
@@ -69,11 +72,13 @@ class IndexController extends Controller
         $user->user_type = $request->input('type');
         $user->save();
 
-        $request = new RequestTable;
-        $request->id = $user->username;
-        $request->title = 'Registration request from ' . $user->name;
-        $request->body = 'Registration request from ' . $user->name . ' as ' . $user->user_type;
-        $request->save();
+        $req = new RequestTable;
+        $req->id = $user->username;
+        $req->title = 'Registration request from ' . $user->name;
+        $req->body = 'Registration request from ' . $user->name . ' as ' . $user->user_type;
+        $req->save();
+
+        event(new RequestEvent($req));
 
         $departments = Department::get();
         return redirect()->back()

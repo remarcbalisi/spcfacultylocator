@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\User;
 use App\Department;
 use App\RequestTable;
+use App\Notification;
 
 //events
 use App\Events\RequestEvent;

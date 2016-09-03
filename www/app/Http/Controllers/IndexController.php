@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\RegisterController;
 //models
 use App\User;
 use App\Department;
+use App\RequestTable;
 
 class IndexController extends Controller
 {
@@ -67,6 +68,12 @@ class IndexController extends Controller
         $user->email = $request->input('email');
         $user->user_type = $request->input('type');
         $user->save();
+
+        $request = new RequestTable;
+        $request->id = $user->username;
+        $request->title = 'Registration request from ' . $user->name;
+        $request->body = 'Registration request from ' . $user->name . ' as ' . $user->user_type;
+        $request->save();
 
         $departments = Department::get();
         return redirect()->back()

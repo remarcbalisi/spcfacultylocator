@@ -76,6 +76,7 @@ class AdminHomeController extends Controller
         $user->department_id = $department->id;
         $user->email = $request->input('email');
         $user->user_type = $request->input('type');
+        $user->is_activated = true;
         $user->save();
 
         $departments = Department::get();

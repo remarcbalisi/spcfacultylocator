@@ -132,6 +132,17 @@ class AdminHomeController extends Controller
         //
     }
 
+    public function show_all_pending_request($auth_username)
+    {
+        $reqs = RequestTable::where(['is_granted'=>false])->get();
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
+        return view('admin.request_list')
+                ->with(['reqs'=>$reqs,
+                        'pageTitle'=>'Admin Pending Requests | ' . SITE_ABRE,
+                        'notifications'=>$notifications
+                    ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

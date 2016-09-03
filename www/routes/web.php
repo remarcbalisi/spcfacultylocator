@@ -42,6 +42,7 @@ Route::group(['prefix'=>'/admin/home/{username}', 'as'=>'admin::', 'middleware'=
     Route::post('user/faculty/store', 'AdminHomeController@store_faculty')->name('faculty.store');
     Route::get('user/faculty/edit/{id}', 'AdminHomeController@edit_faculty')->name('faculty.edit');
     Route::put('user/faculty/update/{id}', 'AdminHomeController@update_faculty')->name('faculty.update');
+    Route::get('requests/pending', 'AdminHomeController@show_all_pending_request')->name('pending_requests.show');
     Route::resource('user', 'AdminHomeController', [
         'names' => [
             'create' => 'user.create',

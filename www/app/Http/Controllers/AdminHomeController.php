@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Hash;
+
 //model
 use App\User;
+use App\Department;
 
 class AdminHomeController extends Controller
 {
@@ -18,9 +21,10 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
+        $user = User::get();
         return view('admin.home')
                 ->with(['pageTitle'=>'Admin Home | ' . SITE_NAME,
-                        'user_count'=>User::count(),
+                        'user_count'=>$user->count(),
                         'users'=> User::get()
                     ]);
     }
@@ -32,7 +36,18 @@ class AdminHomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_student')
+                ->with(['pageTitle'=>'Admin Add User | ' . SITE_NAME,
+                        'departments'=> Department::get()
+                    ]);
+    }
+
+    public function create_faculty()
+    {
+        return view('admin.add_faculty')
+                ->with(['pageTitle'=>'Admin Add User | ' . SITE_NAME,
+                        'departments'=> Department::get()
+                    ]);
     }
 
     /**
@@ -43,7 +58,58 @@ class AdminHomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'username' => 'required|unique:user|max:255',
+            'email' => 'required|unique:user|max:255',
+            'password' => 'required',
+            'department' => 'required',
+            'type' => 'required'
+        ]);
+
+        $department = Department::where('id', $request->input('department') )->first();
+        $user = new User;
+
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->password = Hash::make( $request->input('password') );
+        $user->department_id = $department->id;
+        $user->email = $request->input('email');
+        $user->user_type = $request->input('type');
+        $user->save();
+
+        $departments = Department::get();
+        return redirect()->back()
+                    ->with('info', 'Successfully added ' . $user->name);
+    }
+
+    public function store_faculty(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'username' => 'required|unique:user|max:255',
+            'email' => 'required|unique:user|max:255',
+            'password' => 'required',
+            'department' => 'required',
+            'type' => 'required',
+            'device_id' => 'required|unique:user'
+        ]);
+
+        $department = Department::where('id', $request->input('department') )->first();
+        $user = new User;
+
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->password = Hash::make( $request->input('password') );
+        $user->department_id = $department->id;
+        $user->email = $request->input('email');
+        $user->user_type = $request->input('type');
+        $user->device_id = $request->input('device_id');
+        $user->save();
+
+        $departments = Department::get();
+        return redirect()->back()
+                    ->with('info', 'Successfully added ' . $user->name);
     }
 
     /**
@@ -63,9 +129,24 @@ class AdminHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($auth_username, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        return view('admin.edit_student')
+                ->with(['pageTitle'=>'Admin Edit User | ' . SITE_NAME,
+                        'departments'=> Department::get(),
+                        'user'=>$user
+                    ]);
+    }
+
+    public function edit_faculty($auth_username, $id)
+    {
+        $user = User::where('id', $id)->first();
+        return view('admin.edit_faculty')
+                ->with(['pageTitle'=>'Admin Edit User | ' . SITE_NAME,
+                        'departments'=> Department::get(),
+                        'user'=>$user
+                    ]);
     }
 
     /**
@@ -75,9 +156,62 @@ class AdminHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $auth_username, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'username' => 'required|unique:user,username,'.$id.'|max:255',
+            'email' => 'required|unique:user,email,'.$id.'|max:255',
+            'department' => 'required',
+            'type' => 'required'
+        ]);
+
+        $user = User::where('id', $id)->first();
+        $department = Department::where('id', $request->input('department'))->first();
+
+        if( $request->input('password') ){
+            $user->password = $request->input('password');
+        }
+
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->department_id = $department->id;
+        $user->email = $request->input('email');
+        $user->user_type = $request->input('type');
+        $user->save();
+
+        return redirect()->back()
+                    ->with('info', 'Successfully updated ' . $user->name);
+    }
+
+    public function update_faculty(Request $request, $auth_username, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'username' => 'required|unique:user,username,'.$id.'|max:255',
+            'email' => 'required|unique:user,email,'.$id.'|max:255',
+            'department' => 'required',
+            'type' => 'required',
+            'device_id' => 'required|unique:user,device_id,'.$id.'|max:70',
+        ]);
+
+        $user = User::where('id', $id)->first();
+        $department = Department::where('id', $request->input('department'))->first();
+
+        if( $request->input('password') ){
+            $user->password = $request->input('password');
+        }
+
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->department_id = $department->id;
+        $user->email = $request->input('email');
+        $user->user_type = $request->input('type');
+        $user->device_id = $request->input('device_id');
+        $user->save();
+
+        return redirect()->back()
+                    ->with('info', 'Successfully updated ' . $user->name);
     }
 
     /**
@@ -86,8 +220,12 @@ class AdminHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($auth_username, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        $name = $user->name;
+        $user->delete();
+        return redirect()->back()
+                    ->with('info', 'Successfully deleted ' . $name);
     }
 }

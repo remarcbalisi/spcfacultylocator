@@ -18,6 +18,7 @@ define( "SITE_NAME" , "SPC-Faculty Locator");
 
 Route::group(['middleware'=>['guest']], function(){
 
+    Route::get('/', 'IndexController@index');
     Route::resource('index', 'IndexController');
     //simple login
     Route::post('/login', [
@@ -37,6 +38,18 @@ Route::get('/logout', [
 Route::group(['prefix'=>'/admin/home/{username}', 'as'=>'admin::', 'middleware'=>['auth', 'auth_admin']], function(){
 
     Route::get('/', 'AdminHomeController@index');
-    Route::resource('user', 'AdminHomeController');
+    Route::get('user/faculty/create', 'AdminHomeController@create_faculty')->name('faculty.create');
+    Route::post('user/faculty/store', 'AdminHomeController@store_faculty')->name('faculty.store');
+    Route::get('user/faculty/edit/{id}', 'AdminHomeController@edit_faculty')->name('faculty.edit');
+    Route::put('user/faculty/update/{id}', 'AdminHomeController@update_faculty')->name('faculty.update');
+    Route::resource('user', 'AdminHomeController', [
+        'names' => [
+            'create' => 'user.create',
+            'store' => 'user.store',
+            'destroy' => 'user.destroy',
+            'edit' => 'user.edit',
+            'update' => 'user.update'
+        ],
+    ]);
 
 });

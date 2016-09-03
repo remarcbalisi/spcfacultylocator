@@ -31,17 +31,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
 
     public function authenticate(Request $request)
     {
@@ -51,6 +47,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt( $request->only(['username','password']), $request->has('remember') )) {
+            if( !Auth::user()->is_activated ){
+                Auth::logout();
+                return redirect('index')->with('info', 'Your account is not activated yet!');
+            }
             // Authentication passed...
             return redirect()->back();
         }

@@ -14,7 +14,7 @@
                         <i class="material-icons">playlist_add_check</i>
                     </div>
                     <div class="content">
-                        <div class="text">NEW TASKS</div>
+                        <div class="text">NEW REQUESTS</div>
                         <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            EXPORTABLE TABLE
+                            USER LISTS
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -77,6 +77,14 @@
                         </ul>
                     </div>
                     <div class="body">
+
+                        <?php if( Session::has( 'info' )): ?>
+                            <div class="alert alert-success alert-dismissible">
+                                <strong>Well done!</strong> <?php echo e(Session::get( 'info' )); ?>
+
+                            </div>
+                        <?php endif; ?>
+
                         <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <thead>
                                 <tr>
@@ -111,15 +119,52 @@
                                     <td><?php echo e($user->email); ?></td>
 
                                     <td>
-                                        <button class="btn btn-primary" type="button" name="button">Preview</button>
-                                        <button class="btn btn-warning" type="button" name="button">Edit</button>
-                                        <button class="btn btn-danger" type="button" name="button">Delete</button>
+                                        <?php if($user->user_type == 'faculty'): ?>
+                                        <a href="<?php echo e(route('admin::faculty.edit', ['username'=>Auth::user()->username, 'id'=>$user->id])); ?>"><button class="btn btn-warning" type="button" name="button">Edit</button></a>
+                                        <?php elseif($user->user_type == 'student' || $user->user_type == 'admin'): ?>
+                                        <a href="<?php echo e(route('admin::user.edit', ['username'=>Auth::user()->username, 'id'=>$user->id])); ?>"><button class="btn btn-warning" type="button" name="button">Edit</button></a>
+                                        <?php endif; ?>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo e($user->username); ?>">
+                                            Delete
+                                        </button>
+
                                     </td>
 
                                 </tr>
+
+                                <!-- For Material Design Colors -->
+                                <div id="<?php echo e($user->username); ?>" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content modal-col-red">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Are you sure you want to delete?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2><?php echo e($user->name); ?></h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="<?php echo e(route('admin::user.destroy', ['username'=>Auth::user()->username, 'id'=>$user->id])); ?>" method="post">
+                                                <?php echo e(csrf_field()); ?>
+
+                                                <?php echo method_field('delete'); ?>
+
+                                                <button class="btn btn-danger" type="submit" name="button">Yes</button>
+                                            </form>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                <!-- END For Material Design Colors -->
+
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

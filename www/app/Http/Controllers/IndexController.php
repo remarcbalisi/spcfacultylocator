@@ -20,6 +20,7 @@ use App\Notification;
 
 //events
 use App\Events\RequestEvent;
+use App\Events\NotificationEvent;
 
 class IndexController extends Controller
 {
@@ -88,9 +89,9 @@ class IndexController extends Controller
             $notification->body = $notification_body;
             $notification->user_id = $au->id;
             $notification->save();
+            event(new NotificationEvent($notification, $notification->user_id));
         }
 
-        event(new RequestEvent($req));
 
         $departments = Department::get();
         return redirect()->back()

@@ -16,6 +16,9 @@ use App\Department;
 use App\Notification;
 use App\RequestTable;
 
+//events
+use App\Events\NotificationEvent;
+
 class AdminHomeController extends Controller
 {
     /**
@@ -121,6 +124,54 @@ class AdminHomeController extends Controller
                     ->with('info', 'Successfully added ' . $user->name);
     }
 
+    public function accept_or_delete_request(Request $request, $auth_username, $id)
+    {
+        $tobe_process_request = RequestTable::where(['id'=>$id])->first();
+        $user = User::where(['username'=>$tobe_process_request->id])->first();
+        $all_users = User::where(['user_type'=>'admin'])->get();
+
+        $reqs = RequestTable::where(['is_granted'=>false])->get();
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
+
+        if( $request->input('action') == 'accept' ){
+            $tobe_process_request->is_granted = true;
+            $tobe_process_request->granted_by = Auth::user()->id;
+            $tobe_process_request->save();
+            $user->is_activated = true;
+            $user->save();
+
+            return redirect()->back()
+                    ->with(['reqs'=>$reqs,
+                            'pageTitle'=>'Admin Pending Requests | ' . SITE_ABRE,
+                            'notifications'=>$notifications,
+                            'success'=>'Account of ' . $user->name . ' is successfully activated.'
+                        ]);
+        }
+
+        if( $request->input('action') == 'delete' ){
+            $user_name = $user->name;
+            foreach( $all_users as $au ){
+                $notification = new Notification;
+                $notification->title = 'request_deletion';
+                $notification->body = 'Request from ' . $user->name . ' is deleted.';
+                $notification->user_id = $au->id;
+                $notification->save();
+                event(new NotificationEvent($notification, $notification->user_id));
+            }
+            $tobe_process_request->delete();
+            $user->delete();
+            return redirect()->back()
+                    ->with(['reqs'=>$reqs,
+                            'pageTitle'=>'Admin Pending Requests | ' . SITE_ABRE,
+                            'notifications'=>$notifications,
+                            'success'=>'Account of ' . $user_name . ' is successfully deleted.'
+                        ]);
+        }
+
+        return redirect()->back();
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -204,7 +255,7 @@ class AdminHomeController extends Controller
                     ->with('info', 'Successfully updated ' . $user->name);
     }
 
-    public function update_faculty(Request $request, $auth_username, $id)
+    public function update_facultyRequest($request, $auth_username, $id)
     {
         $this->validate($request, [
             'name' => 'required|max:255',

@@ -546,16 +546,15 @@
           encrypted: true
         });
 
-        var request_channel = pusher.subscribe('request_channel');
-        request_channel.bind('App\\Events\\RequestEvent', function(data) {
-
+        var request_channel = pusher.subscribe('notification_channel' + "{{Auth::user()->id}}");
+        request_channel.bind('App\\Events\\NotificationEvent', function(data) {
           $('#notification_menu').prepend(
               '<li>'+
                   '<a href="javascript:void(0);">'+
                       '<div class="menu-info">'+
-                          '<h4>'+ data.request_data.title +'</h4>'+
+                          '<h4>'+ data.notification_data.body +'</h4>'+
                           '<p>'+
-                              '<i class="material-icons">note_add</i> '+ data.request_data.created_at +
+                              '<i class="material-icons">note_add</i> '+ data.notification_data.created_at +
                           '</p>'+
                       '</div>'+
                   '</a>'+

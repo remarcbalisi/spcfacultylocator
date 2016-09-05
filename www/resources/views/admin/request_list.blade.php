@@ -35,6 +35,14 @@
                             <div class="alert alert-success alert-dismissible">
                                 <strong>Well done!</strong> {{ Session::get( 'info' ) }}
                             </div>
+                        @elseif( Session::has( 'success' ))
+                            <div class="alert alert-success alert-dismissible">
+                                <strong>Well done!</strong> {{ Session::get( 'success' ) }}
+                            </div>
+                        @elseif( Session::has( 'danger' ))
+                            <div class="alert alert-danger alert-dismissible">
+                                <strong>Failed!</strong> {{ Session::get( 'danger' ) }}
+                            </div>
                         @endif
 
                         <table class="table table-bordered table-striped table-hover dataTable js-basic-example">
@@ -57,10 +65,20 @@
 
                                     <td>
                                         <a href="{{ route('admin::faculty.edit', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}"><button class="btn btn-primary" type="button" name="button">Preview</button></a>
-                                        <a href="{{ route('admin::faculty.edit', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}"><button class="btn btn-success" type="button" name="button">Accept</button></a>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$req->title}}">
-                                            Delete
-                                        </button>
+                                        <form action="{{ route('admin::pending_requests.store', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="action" value="accept">
+                                            <a href="{{ route('admin::faculty.edit', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}">
+                                                <button class="btn btn-success" type="submit" name="button">Accept</button>
+                                            </a>
+                                        </form>
+                                        <form action="{{ route('admin::pending_requests.store', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="action" value="delete">
+                                            <button type="submit" class="btn btn-danger">
+                                                Delete
+                                            </button>
+                                        </form>
 
                                     </td>
 

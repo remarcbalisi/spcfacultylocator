@@ -50,7 +50,7 @@
                         <form class="" action="{{ route('admin::faculty.update', ['username'=>Auth::user()->username, 'id'=>$user->id]) }}" method="post">
                             {{ csrf_field() }}
                             {!! method_field('put') !!}
-                            <input name="type" type="hidden" value="student">
+                            <input name="type" type="hidden" value="faculty">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">

@@ -52,7 +52,7 @@
 
                             <?php echo method_field('put'); ?>
 
-                            <input name="type" type="hidden" value="student">
+                            <input name="type" type="hidden" value="faculty">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">

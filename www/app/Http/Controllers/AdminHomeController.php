@@ -47,17 +47,23 @@ class AdminHomeController extends Controller
      */
     public function create()
     {
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
+        $pending_requests = RequestTable::where(['is_granted'=>false])->get();
         return view('admin.add_student')
                 ->with(['pageTitle'=>'Admin Add User | ' . SITE_NAME,
-                        'departments'=> Department::get()
+                        'departments'=> Department::get(),
+                        'notifications'=>$notifications
                     ]);
     }
 
     public function create_faculty()
     {
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
+        $pending_requests = RequestTable::where(['is_granted'=>false])->get();
         return view('admin.add_faculty')
                 ->with(['pageTitle'=>'Admin Add User | ' . SITE_NAME,
-                        'departments'=> Department::get()
+                        'departments'=> Department::get(),
+                        'notifications'=>$notifications
                     ]);
     }
 
@@ -202,21 +208,25 @@ class AdminHomeController extends Controller
      */
     public function edit($auth_username, $id)
     {
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
         $user = User::where('id', $id)->first();
         return view('admin.edit_student')
                 ->with(['pageTitle'=>'Admin Edit User | ' . SITE_NAME,
                         'departments'=> Department::get(),
-                        'user'=>$user
+                        'user'=>$user,
+                        'notifications'=>$notifications
                     ]);
     }
 
     public function edit_faculty($auth_username, $id)
     {
+        $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
         $user = User::where('id', $id)->first();
         return view('admin.edit_faculty')
                 ->with(['pageTitle'=>'Admin Edit User | ' . SITE_NAME,
                         'departments'=> Department::get(),
-                        'user'=>$user
+                        'user'=>$user,
+                        'notifications'=>$notifications
                     ]);
     }
 
@@ -255,7 +265,7 @@ class AdminHomeController extends Controller
                     ->with('info', 'Successfully updated ' . $user->name);
     }
 
-    public function update_facultyRequest($request, $auth_username, $id)
+    public function update_faculty(Request $request, $auth_username, $id)
     {
         $this->validate($request, [
             'name' => 'required|max:255',

@@ -55,3 +55,5 @@ Route::group(['prefix'=>'/admin/home/{username}', 'as'=>'admin::', 'middleware'=
     ]);
 
 });
+
+Route::get('/android/{device_id}', 'AndroidController@index');

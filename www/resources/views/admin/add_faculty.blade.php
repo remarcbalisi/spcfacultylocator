@@ -49,8 +49,16 @@
 
                         <form class="" action="{{ route('admin::faculty.store', ['username'=>Auth::user()->username]) }}" method="post">
                             {{ csrf_field() }}
-                            <input name="type" type="hidden" value="student">
+                            <input name="type" type="hidden" value="faculty">
                             <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input name="id_number" type="text" class="form-control">
+                                            <label class="form-label">ID number</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -62,24 +70,8 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input name="username" type="text" class="form-control">
-                                            <label class="form-label">Username</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
                                             <input name="email" type="text" class="form-control">
                                             <label class="form-label">Email</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input name="password" type="password" class="form-control">
-                                            <label class="form-label">Password</label>
                                         </div>
                                     </div>
                                 </div>

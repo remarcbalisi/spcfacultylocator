@@ -105,9 +105,8 @@ class AdminHomeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'username' => 'required|unique:user|max:255',
+            'id_number' => 'required|unique:user|max:255',
             'email' => 'required|unique:user|max:255',
-            'password' => 'required',
             'department' => 'required',
             'type' => 'required',
             'device_id' => 'required|unique:user'
@@ -117,8 +116,7 @@ class AdminHomeController extends Controller
         $user = new User;
 
         $user->name = $request->input('name');
-        $user->username = $request->input('username');
-        $user->password = Hash::make( $request->input('password') );
+        $user->id_number = $request->input('id_number');
         $user->department_id = $department->id;
         $user->email = $request->input('email');
         $user->user_type = $request->input('type');

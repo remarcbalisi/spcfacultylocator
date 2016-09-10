@@ -44,6 +44,7 @@
         </select><br>
         <button type="submit" name="button">Send Registration Request</button>
     </form>
+    <a href="<?php echo e(url('/')); ?>"><button type="submit" name="button">Back</button></a>
     </div>
 <?php $__env->stopSection(); ?>
 

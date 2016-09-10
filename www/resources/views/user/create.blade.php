@@ -45,5 +45,6 @@
         </select><br>
         <button type="submit" name="button">Send Registration Request</button>
     </form>
+    <a href="{{url('/')}}"><button type="submit" name="button">Back</button></a>
     </div>
 @endsection

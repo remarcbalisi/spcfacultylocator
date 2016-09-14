@@ -28,13 +28,13 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        $user = User::where(['is_activated'=>true])->get();
+        $user = User::get();
         $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
         $pending_requests = RequestTable::where(['is_granted'=>false])->get();
         return view('admin.home')
                 ->with(['pageTitle'=>'Admin Home | ' . SITE_NAME,
                         'user_count'=>$user->count(),
-                        'users'=> User::get(),
+                        'users'=> User::where(['is_activated'=>true])->get(),
                         'notifications'=>$notifications,
                         'pending_requests'=>$pending_requests
                     ]);

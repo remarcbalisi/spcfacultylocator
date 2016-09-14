@@ -28,7 +28,7 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::where(['is_activated'=>true])->get();
         $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
         $pending_requests = RequestTable::where(['is_granted'=>false])->get();
         return view('admin.home')
@@ -121,6 +121,7 @@ class AdminHomeController extends Controller
         $user->email = $request->input('email');
         $user->user_type = $request->input('type');
         $user->device_id = $request->input('device_id');
+        $user->is_activated = true;
         $user->save();
 
         $departments = Department::get();
@@ -192,7 +193,7 @@ class AdminHomeController extends Controller
         $reqs = RequestTable::where(['is_granted'=>false])->get();
         $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
         $pending_users = User::where(['is_activated'=>false])->get();
-        
+
         return view('admin.request_list')
                 ->with(['reqs'=>$reqs,
                         'pageTitle'=>'Admin Pending Requests | ' . SITE_ABRE,

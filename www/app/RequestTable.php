@@ -15,4 +15,8 @@ class RequestTable extends Model
     protected $fillable = [
         'id', 'title', 'body', 'granted_by'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User', 'id', 'username');
+    }
 }

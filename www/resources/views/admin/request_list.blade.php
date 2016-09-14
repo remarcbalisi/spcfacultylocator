@@ -64,7 +64,9 @@
                                     <td>{{ $req->title }}</td>
 
                                     <td>
-                                        <a href="{{ route('admin::faculty.edit', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}"><button class="btn btn-primary" type="button" name="button">Preview</button></a>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$req->id}}_preview">
+                                            Preview
+                                        </button>
                                         <form action="{{ route('admin::pending_requests.store', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="action" value="accept">
@@ -72,20 +74,16 @@
                                                 <button class="btn btn-success" type="submit" name="button">Accept</button>
                                             </a>
                                         </form>
-                                        <form action="{{ route('admin::pending_requests.store', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}" method="post">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="action" value="delete">
-                                            <button type="submit" class="btn btn-danger">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$req->id}}">
+                                            Delete
+                                        </button>
 
                                     </td>
 
                                 </tr>
 
-                                <!-- For Material Design Colors -->
-                                <div id="{{$req->title}}" class="modal fade" role="dialog">
+                                <!-- For Material Design Colors DELETE -->
+                                <div id="{{$req->id}}" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
 
                                     <!-- Modal content-->
@@ -95,12 +93,12 @@
                                             <h4 class="modal-title">Are you sure you want to delete?</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <h2>{{$req->title}}</h2>
+                                            <h4>{{$req->title}}</h4>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{ route('admin::user.destroy', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}" method="post">
+                                            <form action="{{ route('admin::pending_requests.store', ['username'=>Auth::user()->username, 'id'=>$req->id]) }}" method="post">
                                                 {{ csrf_field() }}
-                                                {!! method_field('delete') !!}
+                                                <input type="hidden" name="action" value="delete">
                                                 <button class="btn btn-danger" type="submit" name="button">Yes</button>
                                             </form>
                                             <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
@@ -109,7 +107,40 @@
 
                                     </div>
                                 </div>
-                                <!-- END For Material Design Colors -->
+                                <!-- END For Material Design Colors DELETE -->
+
+                                <!-- For Material Design Colors PREVIEW -->
+                                <div id="{{$req->id}}_preview" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content modal-col-blue">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">{{$req->user->name}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Username: {{$req->user->name}}
+                                            </p>
+                                            <p>
+                                                College: {{$req->user->department->college}}
+                                            </p>
+                                            <p>
+                                                Department: {{$req->user->department->name}}
+                                            </p>
+                                            <p>
+                                                Email: {{$req->user->email}}
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                <!-- END For Material Design Colors PREVIEW -->
 
                                 @endforeach
                             </tbody>

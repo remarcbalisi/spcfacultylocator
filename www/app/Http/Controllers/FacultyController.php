@@ -10,33 +10,16 @@ use App\Http\Requests;
 use App\User;
 use App\Location;
 
-class AndroidController extends Controller
+class FacultyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($device_id)
+    public function index()
     {
-        $user = User::where(['device_id'=>$device_id])->first();
-        $token = csrf_token();
-
-        if($user){
-            return response()->json(['status'=>'OK',
-                                    'token'=>$token,
-                                    'device_id'=>$device_id,
-                                    'user'=>$user,
-                                    'user_type'=>'faculty'
-                                ]);
-        }
-
-        return response()->json(['status'=>'OK',
-                                'token'=>$token,
-                                'device_id'=>$device_id,
-                                'user'=>$user,
-                                'user_type'=>'student'
-                            ]);
+        //
     }
 
     /**
@@ -89,27 +72,20 @@ class AndroidController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $device_id, $latitude, $longitude)
+    public function update(Request $request, $device_id)
     {
-        $user = User::where(['device_id'=>$device_id])->first();
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
 
-        if( $user->location_id ){
-            $location = Location::where(['id'=>$user->location_id])->first();
-            $location->latitude = $latitude;
-            $location->longitude = $longitude;
-            $location->save();
-        }
+        $user = User::where(['device_id'=>$device_id]);
+        $location = new Location;
 
-        else{
-            $location = new Location;
+        $location->latitude = $request->input('latitude');
+        $location->longitude = $request->input('longitude');
+        $location->save();
 
-            $location->latitude = $latitude;
-            $location->longitude = $longitude;
-            $location->save();
-
-            $user->location_id = $location->id;
-            $user->save();
-        }
+        $user->location_id = $location->id;
+        $user->save();
 
         return response()->json(['status'=>'OK', 'message'=>'Successfully updated location']);
     }

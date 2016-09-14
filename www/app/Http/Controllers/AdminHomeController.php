@@ -191,10 +191,13 @@ class AdminHomeController extends Controller
     {
         $reqs = RequestTable::where(['is_granted'=>false])->get();
         $notifications = Notification::where(['user_id'=>Auth::user()->id])->get();
+        $pending_users = User::where(['is_activated'=>false])->get();
+        
         return view('admin.request_list')
                 ->with(['reqs'=>$reqs,
                         'pageTitle'=>'Admin Pending Requests | ' . SITE_ABRE,
-                        'notifications'=>$notifications
+                        'notifications'=>$notifications,
+                        'pending_users'=>$pending_users
                     ]);
     }
 

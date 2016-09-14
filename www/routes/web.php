@@ -57,3 +57,4 @@ Route::group(['prefix'=>'/admin/home/{username}', 'as'=>'admin::', 'middleware'=
 });
 
 Route::get('/android/{device_id}', 'AndroidController@index');
+Route::post('/android/{device_id}/{latitude}/{longitude}', 'AndroidController@update');

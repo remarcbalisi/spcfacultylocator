@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\User;
 use App\Location;
 
+use Auth;
+
 class AndroidController extends Controller
 {
     /**
@@ -111,6 +113,8 @@ class AndroidController extends Controller
             $user->save();
         }
 
+        $user->status = 'online';
+
         return response()->json(['status'=>'OK', 'message'=>'Successfully updated location']);
     }
 
@@ -123,5 +127,34 @@ class AndroidController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function login($username, $password)
+    {
+        Auth::attempt( ['username'=>$username, 'password'=>$password] );
+        $user = Auth::user();
+        if( $user ){
+            $online_faculties = User::where(["status"=>"online"])->get();
+            return response()->json(['status'=>'OK', 'user'=>$user, 'online_faculties'=>$online_faculties]);
+        }
+
+        else{
+            return response()->json(['status'=>'FAILED', 'message'=>'Invalid username or password']);
+        }
+    }
+
+    public function locate($username){
+        $user = User::where(["username"=>$username])->first();
+        $location = Location::where(["id"=>$user->location_id])->first();
+
+        return response()->json(['status'=>'OK', 'location'=>$location]);
+    }
+
+    public function logout($device_id){
+        $user = User::where(["device_id"=>$device_id])->first();
+        $user->status = "offline";
+        $user->save();
+
+        return response()->json(["status"=>"OK", "message"=>"Successfully logged out"]);
     }
 }

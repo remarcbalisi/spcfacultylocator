@@ -145,7 +145,7 @@ class AndroidController extends Controller
     }
 
     public function locate($id_number){
-        $user = User::where(["username"=>$id_number])->first();
+        $user = User::where(["id_number"=>$id_number])->first();
         $location = Location::where(["id"=>$user->location_id])->first();
 
         return response()->json(['status'=>'OK', 'location'=>$location]);

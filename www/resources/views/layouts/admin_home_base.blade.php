@@ -260,9 +260,9 @@
                             <span>Forms</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
+                            <!-- <li>
                                 <a href="{{ route('admin::user.create', ['username'=>Auth::user()->username]) }}">Add Student</a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="{{ route('admin::faculty.create', ['username'=>Auth::user()->username]) }}">Add Faculty</a>
                             </li>

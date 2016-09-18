@@ -114,6 +114,7 @@ class AndroidController extends Controller
         }
 
         $user->status = 'online';
+        $user->save();
 
         return response()->json(['status'=>'OK', 'message'=>'Successfully updated location']);
     }

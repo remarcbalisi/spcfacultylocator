@@ -60,4 +60,4 @@ Route::get('/android/{device_id}', 'AndroidController@index');
 Route::get('/android/logout/{device_id}', 'AndroidController@logout');
 Route::post('/android/{device_id}/{latitude}/{longitude}', 'AndroidController@update');
 Route::get('/android/login/{username}/{password}', 'AndroidController@login');
-Route::get('/android/locate/{username}', 'AndroidController@locate');
+Route::get('/android/locate/{id_number}', 'AndroidController@locate');

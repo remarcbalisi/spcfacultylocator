@@ -31,7 +31,7 @@
         <input type="password" placeholder="password" name="password"><br>
         <button type="submit" name="button">Login</button>
     </form>
-    <a href="<?php echo e(route('index.create')); ?>"><button type="submit" name="button">I am a student!</button> </a>
+    <!-- <a href="<?php echo e(route('index.create')); ?>"><button type="submit" name="button">I am a student!</button> </a> -->
     </div>
 <?php $__env->stopSection(); ?>
 

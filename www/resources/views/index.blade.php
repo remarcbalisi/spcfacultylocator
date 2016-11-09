@@ -32,6 +32,6 @@
         <input type="password" placeholder="password" name="password"><br>
         <button type="submit" name="button">Login</button>
     </form>
-    <a href="{{ route('index.create') }}"><button type="submit" name="button">I am a student!</button> </a>
+    <!-- <a href="{{ route('index.create') }}"><button type="submit" name="button">I am a student!</button> </a> -->
     </div>
 @endsection

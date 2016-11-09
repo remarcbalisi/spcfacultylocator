@@ -9,6 +9,8 @@ use App\Http\Requests;
 //models
 use App\User;
 use App\Location;
+use App\Lecture;
+use App\Semester;
 
 use Auth;
 
@@ -136,7 +138,16 @@ class AndroidController extends Controller
         $user = Auth::user();
         if( $user ){
             $online_faculties = User::where(["status"=>"online"])->get();
-            return response()->json(['status'=>'OK', 'user'=>$user, 'online_faculties'=>$online_faculties]);
+            $semester = Semester::where(['year'=>date("Y")])->first();
+
+            $my_teachers = array();
+            foreach($online_faculties as $of){
+                $lectures = Lecture::where(['student'=>$user->id, 'faculty'=>$of->id, 'semester_id'=>$semester->id])->first();
+                if($lectures){
+                    array_push($my_teachers, $of);
+                }
+            }
+            return response()->json(['status'=>'OK', 'user'=>$user, 'online_faculties'=>$my_teachers]);
         }
 
         else{

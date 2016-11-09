@@ -271,7 +271,6 @@ class AdminHomeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'username' => 'required|unique:user,username,'.$id.'|max:255',
             'email' => 'required|unique:user,email,'.$id.'|max:255',
             'department' => 'required',
             'type' => 'required',
